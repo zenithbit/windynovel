@@ -1,0 +1,149 @@
+📘 Tổng quan dự án: Web App Đọc Truyện Dịch
+🎯 Mục tiêu:
+Phát triển một website đọc truyện dịch từ Trung Quốc, đa thể loại, trải nghiệm người dùng thân thiện, hiện đại. Người dùng có thể dễ dàng tìm kiếm, theo dõi, đánh dấu truyện và đọc truyện theo chương với nhiều tùy chọn cá nhân hóa.
+
+🧱 Công nghệ sử dụng:
+Thành phần	Công nghệ
+Frontend	React + Vite
+Routing	React Router DOM
+Styling	Tailwind CSS
+State	LocalStorage / Zustand (tùy chọn)
+Dữ liệu truyện	File JSON tĩnh hoặc API tự xây
+Hosting	Vercel / Netlify
+
+📂 Cấu trúc thư mục đề xuất:
+css
+Sao chép
+Chỉnh sửa
+src/
+├── assets/               # Ảnh, biểu tượng
+├── components/           # Các component tái sử dụng
+│   ├── StoryCard.jsx
+│   ├── ChapterList.jsx
+│   ├── ReaderView.jsx
+│   └── CommentBox.jsx
+├── data/                 # Dữ liệu truyện dạng JSON
+│   └── story1.json
+├── pages/
+│   ├── Home.jsx
+│   ├── StoryDetail.jsx
+│   └── ChapterReader.jsx
+├── utils/
+│   └── localStorage.js
+├── App.jsx
+└── main.jsx
+🔗 Routing:
+URL	Component	Mô tả
+/	Home	Danh sách truyện
+/story/:id	StoryDetail	Chi tiết + danh sách chương
+/story/:id/chapter/:chapterNumber	ChapterReader	Giao diện đọc chương
+
+📌 Tính năng chính:
+📚 1. Kho truyện đa dạng & phân loại rõ ràng
+Hơn 30.000 đầu truyện (manga, manhwa, manhua, truyện Việt)
+
+Thể loại: học đường, lãng mạn, hành động, viễn tưởng, kinh dị,…
+
+Phân chia theo:
+
+Thể loại
+
+Độ tuổi
+
+Xếp hạng (ngày, tuần, tháng)
+
+Truyện hot, truyện đề cử
+
+🖥️ 2. Giao diện thân thiện, dễ dùng
+Responsive (hoạt động tốt trên cả desktop và mobile)
+
+Chuyển đổi chế độ đọc: sáng / tối, toàn màn hình
+
+Tuỳ chỉnh giao diện đọc:
+
+Font chữ
+
+Kích cỡ chữ
+
+Độ sáng màn hình
+
+🔖 3. Cá nhân hóa trải nghiệm
+Người dùng có thể:
+
+Bookmark/chọn "theo dõi" truyện yêu thích
+
+Lưu chương đang đọc bằng LocalStorage
+
+Xem lại lịch sử đã đọc gần đây
+
+Thông báo truyện ra chương mới (trong tương lai)
+
+🔄 4. Cập nhật nhanh & liên tục
+Cập nhật chương truyện thường xuyên
+
+Hiển thị thứ tự mới nhất theo thời gian
+
+Mỗi truyện có timestamp "lần cập nhật cuối"
+
+🌐 5. Cộng đồng & tương tác
+Hệ thống bình luận dưới mỗi chương
+
+Hỗ trợ trả lời, thả cảm xúc, phản hồi
+
+Gợi ý các truyện tương tự dựa theo hành vi người đọc (tùy chọn nâng cao)
+
+📦 Dữ liệu mẫu data/story1.json
+json
+Sao chép
+Chỉnh sửa
+{
+  "id": "story1",
+  "title": "Thế Giới Hậu Tận Thế",
+  "author": "Vô Danh",
+  "description": "Một câu chuyện sinh tồn trong thế giới bị đột biến sinh học.",
+  "tags": ["hành động", "giả tưởng", "hậu tận thế"],
+  "updatedAt": "2025-06-09T10:00:00Z",
+  "chapters": [
+    {
+      "number": 1,
+      "title": "Thức tỉnh",
+      "content": "Tôi tỉnh dậy giữa đống hoang tàn...",
+      "comments": [
+        {
+          "user": "truyenfan123",
+          "text": "Chương đầu hấp dẫn quá!",
+          "timestamp": "2025-06-09T10:30:00Z"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "Biến dị",
+      "content": "Một tiếng gầm vang lên từ xa...",
+      "comments": []
+    }
+  ]
+}
+🔧 Chức năng MVP (phiên bản đầu):
+ Giao diện danh sách truyện
+
+ Xem chi tiết truyện + chương
+
+ Đọc truyện có tùy chỉnh (font, kích thước, theme)
+
+ Bookmark truyện và lưu chương đã đọc
+
+ Hiển thị lịch sử truyện đang theo dõi
+
+ Comment từng chương
+
+🌟 Gợi ý mở rộng sau MVP:
+Tính năng nâng cao	Mô tả
+Đăng ký/Đăng nhập	Để đồng bộ dữ liệu đọc
+Thông báo real-time	Khi có chương mới, có phản hồi comment
+Gợi ý truyện dựa trên hành vi đọc	Như “Bạn có thể thích…”
+Quản lý admin	Upload truyện mới, sửa nội dung
+Đọc offline (PWA hoặc caching)	Cho phép lưu truyện tạm để đọc không mạng
+
+🧠 Gợi ý prompt dành cho Cursor:
+"Tạo project React gồm 3 trang: danh sách truyện, chi tiết truyện, và trang đọc chương. Mỗi truyện lưu trong file JSON với cấu trúc có title, author, description, tags, updatedAt và danh sách chapters (có content và comment). Giao diện hỗ trợ tùy chỉnh đọc (dark mode, font, cỡ chữ), lưu lịch sử đọc bằng LocalStorage, và cho phép comment từng chương."
